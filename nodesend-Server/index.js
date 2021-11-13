@@ -1,5 +1,6 @@
 const express = require('express');
 const { dbConnection } = require('./config/db');
+const cors = require('cors');
 require('dotenv').config({ path:'.env'});
 
 const app = express();
@@ -9,6 +10,11 @@ dbConnection();
 // app.use( express.static('public') );
 
 app.use( express.json() );
+
+const corsOptions = {
+    origin: process.env.FRONTEND_URL
+}
+app.use( cors(corsOptions) );
 
 app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/auth', require('./routes/auth'));

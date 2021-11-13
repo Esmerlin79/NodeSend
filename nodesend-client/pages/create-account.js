@@ -1,8 +1,14 @@
 import { useFormik } from "formik";
 import Layout from "../components/Layout";
 import * as Yup from 'yup';
+import { useContext } from "react";
+import AuthContext from "../context/auth/authContext";
+import Alert from "../components/Alert";
+
 
 const CreateAccount = () => {
+
+    const { message, registerUser } = useContext(AuthContext);
 
     const formik = useFormik({
         initialValues: {
@@ -16,7 +22,7 @@ const CreateAccount = () => {
             password: Yup.string().required('El password no puede ir vacio').min(6, 'El password debe tener al menos 6 caracteres')
         }),
         onSubmit: value => {
-            console.log(value)
+            registerUser(value);
         }
     })
 
@@ -24,6 +30,8 @@ const CreateAccount = () => {
     <Layout>
         <div className="md:w-4/5 xl:w-3/5 mx-auto mb-32">
             <h2 className="text-4xl font-sans font-bold text-gray-800 text-center my-4">Crear Cuenta</h2>
+
+            { message && <Alert /> }
 
             <div className="flex justify-center mt-5">
                 <div className="w-full max-w-lg">

@@ -1,0 +1,7 @@
+
+export const types = {
+    USER_AUTHENTICATED: '[auth] USER_AUTHENTICATED',
+    REGISTER_SUCCESS: '[auth] REGISTER_SUCCESS',
+    REGISTER_ERROR: '[auth] REGISTER_ERROR',
+    CLEAN_ALERT: '[auth] CLEAN_ALERT',
+}
