@@ -1,7 +1,14 @@
 
 export const types = {
+    LOGIN_SUCCESS: '[auth] LOGIN_SUCCESS',
+    LOGIN_ERROR: '[auth] LOGIN_ERROR',
+    
     USER_AUTHENTICATED: '[auth] USER_AUTHENTICATED',
+
     REGISTER_SUCCESS: '[auth] REGISTER_SUCCESS',
     REGISTER_ERROR: '[auth] REGISTER_ERROR',
+
+    LOGOUT: '[auth] LOGOUT',
+
     CLEAN_ALERT: '[auth] CLEAN_ALERT',
 }

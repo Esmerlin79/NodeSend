@@ -1,7 +1,17 @@
 import Head from 'next/head';
+import { useContext, useEffect } from 'react';
+import AuthContext from '../context/auth/authContext';
 import Header from './Header';
 
 const Layout = ({ children }) => {
+    
+    const { userAuthenticated } = useContext(AuthContext);
+
+    useEffect(() => {
+        userAuthenticated();
+    }, [])
+
+
     return ( 
         <>
             <Head>

@@ -1,14 +1,15 @@
 import { useFormik } from "formik";
 import Layout from "../components/Layout";
 import * as Yup from 'yup';
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AuthContext from "../context/auth/authContext";
 import Alert from "../components/Alert";
-
+import { useRouter } from "next/router";
 
 const CreateAccount = () => {
 
-    const { message, registerUser } = useContext(AuthContext);
+    const { authenticated, message, registerUser } = useContext(AuthContext);
+    const router = useRouter();
 
     const formik = useFormik({
         initialValues: {
@@ -25,6 +26,12 @@ const CreateAccount = () => {
             registerUser(value);
         }
     })
+
+    useEffect(() => {
+        if(authenticated) {
+            router.replace('/');
+        }
+    }, [authenticated])
 
   return ( 
     <Layout>
