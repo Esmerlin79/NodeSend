@@ -22,7 +22,7 @@ const AuthState = ({ children }) => {
     const cleanAlert = () => {
         setTimeout( () => {
             dispatch({
-                type: types.CLEAN_ALERT,
+                type: types.HIDE_ALERT,
             })
         }, 3000)
     }

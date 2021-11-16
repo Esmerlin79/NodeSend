@@ -10,5 +10,13 @@ export const types = {
 
     LOGOUT: '[auth] LOGOUT',
 
-    CLEAN_ALERT: '[auth] CLEAN_ALERT',
+    UPLOAD_FILE: '[app] UPLOAD_FILE',
+    UPLOAD_FILE_SUCCESS: '[app] UPLOAD_FILE_SUCCESS',
+    UPLOAD_FILE_ERROR: '[app] UPLOAD_FILE_SUCCESS',
+    
+    CREATE_LINK_SUCCESS: '[app] CREATE_LINK_SUCCESS',
+    CREATE_LINK_ERROR: '[app] CREATE_LINK_ERROR',
+
+    SHOW_ALERT: '[ui] SHOW_ALERT',
+    HIDE_ALERT: '[ui] HIDE_ALERT',
 }

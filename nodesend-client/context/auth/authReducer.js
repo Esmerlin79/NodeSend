@@ -44,7 +44,7 @@ export default (state = initialState, action) => {
                 message: null
             }
 
-        case types.CLEAN_ALERT: 
+        case types.HIDE_ALERT: 
             return {
                 ...state,
                 message: null
