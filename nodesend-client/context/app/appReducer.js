@@ -52,6 +52,19 @@ export default (state = initialState, action) => {
                 ...state,
                 message_file: null
             }
+
+        case types.CLEAN_STATE: 
+            return {
+                ...state,
+                message_file: null,
+                nombre: '',
+                nombre_original: '',
+                loading: null,
+                descargas: 1,
+                password: '',
+                autor: null,
+                url: ''
+            }
         default:
             return state;
     }

@@ -80,6 +80,12 @@ const AppState = ({ children }) => {
         }
     }
 
+    const cleanState = () => {
+        dispatch({
+            type: types.CLEAN_STATE
+        })
+    }
+
     return (
       <AppContext.Provider value={{
          message_file: state.message_file,
@@ -92,7 +98,8 @@ const AppState = ({ children }) => {
          url: state.url,
          uploadFile,
          createLink,
-         showAlert
+         showAlert,
+         cleanState
       }}>
           {children}
       </AppContext.Provider>

@@ -17,6 +17,8 @@ export const types = {
     CREATE_LINK_SUCCESS: '[app] CREATE_LINK_SUCCESS',
     CREATE_LINK_ERROR: '[app] CREATE_LINK_ERROR',
 
+    CLEAN_STATE: '[app] CLEAN_STATE',
+
     SHOW_ALERT: '[ui] SHOW_ALERT',
     HIDE_ALERT: '[ui] HIDE_ALERT',
 }

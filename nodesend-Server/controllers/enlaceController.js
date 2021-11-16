@@ -63,7 +63,7 @@ exports.getAllLink = async (req, res = response) => {
     }
 }
 
-exports.getLink = async (req, res = response, next) => {
+exports.getLink = async (req, res = response) => {
     
     const { url } = req.params;
 
@@ -76,21 +76,6 @@ exports.getLink = async (req, res = response, next) => {
                 msg: 'Ese enlace no existe'
             })
         }
-        
-        const { id, descargas, nombre } = enlace;
-
-        if( descargas === 1 ) {
-
-            req.archivo = nombre;
-
-            await Enlace.findByIdAndDelete(id);
-            
-            next();
-        } else {
-
-            enlace.descargas--;
-            await enlace.save();
-        } 
 
         res.json({
             success: true,

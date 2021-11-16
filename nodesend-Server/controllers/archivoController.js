@@ -2,6 +2,7 @@ const { response } = require("express");
 const multer = require("multer");
 const { configuration } = require("../helpers/config-multer");
 const fs = require('fs');
+const Enlace = require("../models/Enlace");
 
 exports.subirArchivo = async (req, res = response) => {
 
@@ -42,4 +43,30 @@ exports.eliminarArchivo = async (req, res = response) => {
     } catch (error) {
         console.log(error);
     }
+}
+
+exports.download = async (req, res = response, next) => {
+
+    const { archivo } = req.params;
+    
+    const enlace = await Enlace.findOne({ nombre: archivo });
+
+    const { id, descargas, nombre } = enlace;
+    
+    const dirnameArchivo = __dirname + '/../uploads/' + archivo;
+
+    res.download(dirnameArchivo);
+
+    if( descargas === 1 ) {
+
+        req.archivo = nombre;
+
+        await Enlace.findByIdAndDelete(id);
+        
+        next();
+    } else {
+
+        enlace.descargas--;
+        await enlace.save();
+    } 
 }
