@@ -1,6 +1,12 @@
 import Layout from "../../components/Layout";
 
-import React from 'react'
+export async function getStaticProps() {
+
+}
+
+export async function getStaticPaths() {
+
+}
 
 const Enlace = () => {
     return (

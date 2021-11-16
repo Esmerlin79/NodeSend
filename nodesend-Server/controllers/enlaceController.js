@@ -45,6 +45,24 @@ exports.newLinks = async (req, res = response) => {
 
 }
 
+exports.getAllLink = async (req, res = response) => {
+    try {
+        const enlace = await Enlace.find({}).select('url -_id');
+
+        res.json({
+            success: true,
+            enlaces: enlace
+        })
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            success: false,
+            msg: 'Internal Server Error'
+        })
+    }
+}
+
 exports.getLink = async (req, res = response, next) => {
     
     const { url } = req.params;
