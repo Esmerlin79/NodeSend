@@ -26,7 +26,7 @@ const Home = () => {
             </>
           ) : (
             <>
-               { message_file && <Alert message={message_file}/>}
+               { message_file && <Alert message={message_file} />}
 
                 <div className="lg:flex md:shadow-lg p-5 bg-white rounded-lg py-10">
                   <Dropzone />

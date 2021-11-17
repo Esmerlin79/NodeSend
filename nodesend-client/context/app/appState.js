@@ -86,6 +86,20 @@ const AppState = ({ children }) => {
         })
     }
 
+    const addPassword = password => {
+        dispatch({
+            type: types.ADD_PASSWORD,
+            payload: password
+        })
+    }
+
+    const addDownload = download => {
+        dispatch({
+            type: types.ADD_DOWNLOAD,
+            payload: parseInt(download)
+        })
+    }
+
     return (
       <AppContext.Provider value={{
          message_file: state.message_file,
@@ -99,7 +113,9 @@ const AppState = ({ children }) => {
          uploadFile,
          createLink,
          showAlert,
-         cleanState
+         cleanState,
+         addPassword,
+         addDownload
       }}>
           {children}
       </AppContext.Provider>

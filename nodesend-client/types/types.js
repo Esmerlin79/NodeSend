@@ -17,6 +17,9 @@ export const types = {
     CREATE_LINK_SUCCESS: '[app] CREATE_LINK_SUCCESS',
     CREATE_LINK_ERROR: '[app] CREATE_LINK_ERROR',
 
+    ADD_PASSWORD: '[app] ADD_PASSWORD',
+    ADD_DOWNLOAD: '[app] ADD_DOWNLOAD',
+
     CLEAN_STATE: '[app] CLEAN_STATE',
 
     SHOW_ALERT: '[ui] SHOW_ALERT',

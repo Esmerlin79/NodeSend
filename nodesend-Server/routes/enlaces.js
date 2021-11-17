@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { check } = require("express-validator");
-const { newLinks, getLink, getAllLink } = require("../controllers/enlaceController");
+const { newLinks, getLink, getAllLink, hasPassword, verifyPassword } = require("../controllers/enlaceController");
 const validateFields = require("../middlewares/validate-fields");
 const { validateJWT } = require("../middlewares/validate-jwt");
 
@@ -21,6 +21,8 @@ router.post(
 
 router.get('/', getAllLink);
 
-router.get('/:url', getLink);
+router.get('/:url', hasPassword, getLink);
+
+router.post('/:url', verifyPassword, getLink)
 
 module.exports = router;

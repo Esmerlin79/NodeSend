@@ -65,6 +65,18 @@ export default (state = initialState, action) => {
                 autor: null,
                 url: ''
             }
+        case types.ADD_PASSWORD: 
+            return {
+                ...state,
+                password: action.payload
+            }
+
+        case types.ADD_DOWNLOAD:
+            return {
+                ...state,
+                descargas: action.payload
+            }
+            
         default:
             return state;
     }

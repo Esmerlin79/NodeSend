@@ -70,16 +70,10 @@ exports.getLink = async (req, res = response) => {
    try {
         const enlace = await Enlace.findOne({ url });
 
-        if( !enlace ) {
-            return res.status(404).json({
-                success: false,
-                msg: 'Ese enlace no existe'
-            })
-        }
-
         res.json({
             success: true,
-            archivo: enlace.nombre
+            archivo: enlace.nombre,
+            password: false
         })
 
    } catch (error) {
@@ -90,4 +84,60 @@ exports.getLink = async (req, res = response) => {
         })
    }
 
+}
+
+exports.hasPassword = async (req, res = response, next) => {
+    const { url } = req.params;
+
+   try {
+        const enlace = await Enlace.findOne({ url });
+
+        if( !enlace ) {
+            return res.status(404).json({
+                success: false,
+                msg: 'Ese enlace no existe'
+            })
+        }
+
+        if(enlace.password) {
+            return res.json({ password: true, enlace: url });
+        }
+
+        next();
+
+   } catch (error) {
+       console.log(error);
+        res.status(500).json({
+            success: false,
+            msg: 'Internal Server Error'
+        })
+   }
+}
+
+exports.verifyPassword = async (req, res = response, next) => {
+    
+    const { url } = req.params;
+    const { password } = req.body;
+
+    try {
+        const enlace = await Enlace.findOne({ url });
+
+        const validPassword = bcrypt.compareSync( password, enlace.password );
+
+        if( !validPassword ) {
+            return res.status(400).json({
+                success: false,
+                msg: 'Password incorrecto'
+            })
+        }
+
+        next();
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            success: false,
+            msg: 'Internal Server Error'
+        })
+    }
 }
